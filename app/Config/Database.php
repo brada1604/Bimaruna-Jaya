@@ -29,7 +29,7 @@ class Database extends Config
         'hostname' => 'localhost',
         'username' => 'root',
         'password' => '',
-        'database' => 'db_mahasiswa_pdf',
+        'database' => 'db_bimaruna_jaya',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
         'pConnect' => false,
