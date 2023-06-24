@@ -1,3 +1,9 @@
+<?php 
+    $request = \Config\Services::request();
+    $url1 = $request->uri->getSegment(1);
+    $url2 = $request->uri->getSegment(2);
+?>
+<?= isset($_POST['name']) ? $_POST['name'] : null?>
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -18,7 +24,7 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li class="nav-item  <?= ($url1 == 'dashboard') ? "active" : "";?>">
                 <a class="nav-link" href="/dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
@@ -35,13 +41,13 @@
             <?php endif ?>
 
             <?php if ($session->get('role') == 1 || $session->get('role') == 2): ?>
-                <li class="nav-item">
+                <li class="nav-item <?= ($url1 == 'absen_master') ? "active" : "";?>">
                     <a class="nav-link" href="/absen_master">
                         <i class="fas fa-fw fa-folder"></i>
                         <span>Absen</span></a>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item <?= ($url1 == 'scanner_master') ? "active" : "";?>">
                     <a class="nav-link" href="/scanner_master">
                         <i class="fas fa-fw fa-folder"></i>
                         <span>Scanner</span></a>
@@ -49,7 +55,7 @@
             <?php endif ?>
 
             <?php if ($session->get('role') == 3): ?>
-                <li class="nav-item">
+                <li class="nav-item <?= ($url1 == 'absen_master_pegawai') ? "active" : "";?>">
                     <a class="nav-link" href="/absen_master_pegawai">
                         <i class="fas fa-fw fa-folder"></i>
                         <span>Absen</span></a>
@@ -68,7 +74,7 @@
             <?php endif ?>
 
             <?php if ($session->get('role') == 1 || $session->get('role') == 2): ?>
-                <li class="nav-item">
+                <li class="nav-item <?= ($url1 == 'pegawai_master') ? "active" : "";?>">
                     <a class="nav-link" href="/pegawai_master">
                         <i class="fas fa-fw fa-folder"></i>
                         <span>Pegawai</span></a>
@@ -76,9 +82,9 @@
             <?php endif ?>
 
             <?php if ($session->get('role') == 1): ?>
-                <li class="nav-item">
+                <li class="nav-item <?= ($url1 == 'user_master' || ($url1 == 'user' && ($url2 == 'add' || $url2 == 'edit'))) ? "active" : "";?>">
                     <a class="nav-link" href="/user_master">
-                        <i class="fas fa-fw fa-folder"></i>
+                        <i class="fas fa-fw  fa-folder"></i>
                         <span>User</span></a>
                 </li>
             <?php endif ?>   
@@ -92,7 +98,7 @@
             </div>
 
             <!-- Nav Item - Tables -->
-            <li class="nav-item">
+            <li class="nav-item <?= ($url1 == 'user' && $url2 == 'profil') ? "active" : "";?>">
                 <a class="nav-link" href="/user/profil">
                     <i class="fas fa-fw fa-user"></i>
                     <span>Profil</span></a>

@@ -403,7 +403,7 @@ class UserController extends BaseController
          
                 echo '<script>
                     alert("Selamat! Berhasil Mengubah Profil User");
-                    window.location="' . base_url('/user/profil') . '"
+                    window.location="' . base_url('/logout') . '"
                 </script>';
             }
         else {

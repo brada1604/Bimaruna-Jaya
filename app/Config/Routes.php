@@ -59,14 +59,14 @@ $routes->get('/user/edit/(:segment)', 'UserController::edit/$1', ['filter' => 'a
 $routes->post('/user/update', 'UserController::update', ['filter' => 'auth']);
 $routes->get('/user/delete/(:segment)', 'UserController::delete/$1', ['filter' => 'auth']);
 $routes->get('/user/reset_password/(:segment)', 'UserController::reset_password/$1', ['filter' => 'auth']);
+$routes->get('/user/profil', 'UserController::profil', ['filter' => 'auth']);
+$routes->post('/user/update_profil', 'UserController::update_profil', ['filter' => 'auth']);
+$routes->get('/user/ubah_password', 'UserController::ubah_password', ['filter' => 'auth']);
+$routes->post('/user/save_password_baru', 'UserController::save_password_baru', ['filter' => 'auth']);
 
 
 $routes->get('/user', 'UserController::display');
-$routes->get('/user/profil', 'UserController::profil');
-$routes->get('/user/ubah_password', 'UserController::ubah_password');
-$routes->post('/user/save_password_baru', 'UserController::save_password_baru');
 $routes->get('/user/(:segment)', 'UserController::detail/$1', ['filter' => 'auth']);
-$routes->post('/user/update_profil', 'UserController::update_profil');
 $routes->post('/user/search', 'UserController::search');
 $routes->get('/user/email_activation/(:segment)/(:segment)', 'UserController::kirim_email/$1/$2');
 $routes->get('/aktivasi_akun/(:segment)', 'UserController::aktivasi_akun/$1');
