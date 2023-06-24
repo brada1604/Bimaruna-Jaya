@@ -69,9 +69,11 @@
                     </div>
 
                     <div class="text-center p-t-115">
-                        <span class="txt1">
-                            PT Bimaruna Jaya
-                        </span>
+                        <a class="txt2" href="/">
+                            <span class="txt1">
+                                PT Bimaruna Jaya
+                            </span>
+                        </a>
                     </div>
                 </form>
             </div>

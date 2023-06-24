@@ -75,6 +75,12 @@ class PegawaiModel extends Model
             return $query->getResult(); // return berupa array objek
         }
     }
+
+    public function getPegawaiByIdUser($id = false)
+    {
+        $query = $this->db->query("SELECT * FROM tbl_pegawai where id_user = '$id' ");
+        return $query->getResult(); // return berupa array objek
+    }
  
     public function savePegawai($data)
     {

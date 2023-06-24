@@ -14,7 +14,7 @@ class UserModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['username','name','password'];
+    protected $allowedFields    = ['role', 'name', 'email', 'password', 'status', 'email_verified_at'];
 
     // Dates
     protected $useTimestamps = false;
@@ -40,10 +40,31 @@ class UserModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    public function getUser($username)
+    public function getUser($email)
     {
         // Manual atau Query Builder
-        $query = $this->db->query("SELECT * FROM tbl_user where binary username = '$username' ");
+        $query = $this->db->query("SELECT * FROM tbl_user where binary email = '$email' ");
+        return $query->getResult(); // return berupa array objek
+    }
+
+    public function getUserAll()
+    {
+        // Manual atau Query Builder
+        $query = $this->db->query("SELECT * FROM tbl_user");
+        return $query->getResult(); // return berupa array objek
+    }
+
+    public function getUserById($id)
+    {
+        // Manual atau Query Builder
+        $query = $this->db->query("SELECT * FROM tbl_user where id = '$id'");
+        return $query->getResult(); // return berupa array objek
+    }
+
+    public function getUserByRole($id)
+    {
+        // Manual atau Query Builder
+        $query = $this->db->query("SELECT * FROM tbl_user where role = '$id'");
         return $query->getResult(); // return berupa array objek
     }
 }
