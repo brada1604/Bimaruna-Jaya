@@ -41,7 +41,7 @@
                                                 <td><?= $row->nama_pegawai;?></td>
                                                 <td>
                                                     <a class="edit" class="btn btn-warning" href="/pegawai/edit/<?= $row->id_pegawai;?>"><button type="button" class="btn btn-warning">Edit</button></a>
-                                                    <a class="hapus" class="btn btn-danger" href="/pegawai/delete/<?= $row->id_pegawai;?>"><button type="button" class="btn btn-danger">Hapus</button></a> 
+                                                    <a class="hapus" class="btn btn-danger" href="/pegawai/delete/<?= $row->id_user;?>"><button type="button" class="btn btn-danger">Hapus</button></a> 
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>

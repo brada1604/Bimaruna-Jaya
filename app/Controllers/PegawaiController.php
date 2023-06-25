@@ -127,11 +127,11 @@ class PegawaiController extends BaseController
 
     }
 
-    public function delete($id_pegawai){
-        $model = new PegawaiModel;
-        $model->delete($id_pegawai);
+    public function delete($id){
+        $model = new UserModel;
+        $model->delete($id);
         echo '<script>
-                alert("Selamat! Berhasil Menghapus Data Pegawai");
+                alert("Selamat! Berhasil Menghapus Data Pegawai beserta akunnya");
                 window.location="' . base_url('pegawai_master') . '"
             </script>';
     }
