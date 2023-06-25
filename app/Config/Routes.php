@@ -76,6 +76,15 @@ $routes->post('/user/register_user/save', 'UserController::save_register');
 
 
 
+// ROUTES PEGAWAI
+$routes->get('/pegawai_master', 'PegawaiController::index', ['filter' => 'auth']);
+$routes->get('/pegawai/edit_status/(:segment)/(:segment)', 'PegawaiController::edit_status/$1/$2', ['filter' => 'auth']);
+$routes->get('/pegawai/add', 'PegawaiController::add', ['filter' => 'auth']);
+$routes->post('/pegawai/save', 'PegawaiController::save', ['filter' => 'auth']);
+$routes->get('/pegawai/edit/(:segment)', 'PegawaiController::edit/$1', ['filter' => 'auth']);
+$routes->post('/pegawai/update', 'PegawaiController::update', ['filter' => 'auth']);
+$routes->get('/pegawai/delete/(:segment)', 'PegawaiController::delete/$1', ['filter' => 'auth']);
+
 
 
 

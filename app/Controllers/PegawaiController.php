@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\PegawaiModel;
+use App\Models\UserModel;
 use App\Controllers\BaseController;
 
 class PegawaiController extends BaseController
@@ -10,121 +11,128 @@ class PegawaiController extends BaseController
     public function index()
     {
         $model = new PegawaiModel;
+        $data['session'] = session();
         $data['title'] = 'Data Pegawai';
         $data['getPegawai'] = $model->getPegawai();
 
         echo view('layout/v_header', $data);
-        echo view('layout/v_navbar');
-        echo view('Pegawai/index', $data);
-        echo view('layout/v_footer');
-    }
-
-     public function search()
-    {
-        $model = new PegawaiModel;
-        $data['title'] = 'Data Pegawai By Nama';
-        $nama = $this->request->getPost('nama');
-        $data['getPegawai'] = $model->getPegawaiByNama($nama);
-
-        echo view('layout/v_header', $data);
+        echo view('layout/v_sidebar');
         echo view('layout/v_navbar');
         echo view('pegawai/index', $data);
         echo view('layout/v_footer');
     }
 
-    public function detail($id){
-        $model = new PegawaiModel;
-        $data['title'] = 'Data Detail Pegawai';
-        $data['getPegawai'] = $model->getPegawai($id);
-        
-        echo view('layout/v_header', $data);
-        echo view('layout/v_navbar');
-        echo view('pegawai/detail', $data);
-        echo view('layout/v_footer');
-    }
-
     public function add(){
-        $data['title'] = 'Data Pegawai';
+        $data['title'] = 'Data Pegawai - Add';
+        $data['session'] = session();
 
         echo view('layout/v_header', $data);
+        echo view('layout/v_sidebar');
         echo view('layout/v_navbar');
         echo view('pegawai/add');
         echo view('layout/v_footer');
     }
 
     public function save(){
-        $model = new PegawaiModel;
+        $data['session'] = session();
+        $rules = [
+            'name' => 'required',
+            'nomor_induk' => 'required|is_unique[tbl_user.email]',
+            'email' => 'required|is_unique[tbl_user.email]',
+            'password' => 'required',
+            'confirm_password' => 'required|matches[password]'
+        ];
+     
+        if($this->validate($rules)){
+            $model_user = new UserModel();
+            $model_pegawai = new PegawaiModel();
 
-        // //////////
-        if (!$this->validate([
-            'nip' => ['label' => 'nip', 'rules' => 'required|exact_length[10]|is_unique[tbl_pegawai.nip]'],
-            'nama' => ['label' => 'nama', 'rules' => 'required|max_length[50]|alpha_space'],
-            'gender' => ['label' => 'gender', 'rules' => 'required'],
-            'telp' => ['label' => 'telp', 'rules' => 'required|min_length[9]|max_length[15]|numeric'],
-            'email' => ['label' => 'email', 'rules' => 'required|min_length[5]|valid_email|is_unique[tbl_pegawai.email]'],
-            'pendidikan' => ['label' => 'pendidikan', 'rules' => 'required'],
-        ])) {
-            session()->setFlashdata('msg', $this->validator->listErrors());
-            return redirect()->back()->withInput();
-            // echo view('validation_form', ['validation' => $this->validator]);
-            // echo view('pegawai/add', ['validation' => $this->validator]);
-            // echo $this->validator->listErrors();
-        } else {
-            $data = array(
-                'nip' => $this->request->getPost('nip'),
-                'nama' => $this->request->getPost('nama'),
-                'gender' => $this->request->getPost('gender'),
-                'telp' => $this->request->getPost('telp'),
-                'email' => $this->request->getPost('email'),
-                'pendidikan' => $this->request->getPost('pendidikan')
-            );
-            $model->savePegawai($data);
+            $data_user = [
+                'role' => '3',
+                'name' => $this->request->getVar('name'),
+                'email' => $this->request->getVar('email'),
+                'password' => password_hash($this->request->getVar('password'), PASSWORD_BCRYPT),
+            ];
+
+            $model_user->save($data_user);
+
+            $data_pegawai = [
+                'id_user' => $model_user->insertID(),
+                'nomor_induk' => $this->request->getVar('name'),
+                'nama_pegawai' => $this->request->getVar('name')
+            ];            
+            
+            $model_pegawai->save($data_pegawai);             
+
             echo '<script>
-                    alert("Selamat! Berhasil Menambah Data Pegawai");
-                    window.location="' . base_url('pegawai') . '"
+                    alert("Selamat! Berhasil Mendaftar");
+                    window.location="' . base_url('/pegawai_master') . '"
                 </script>';
+     
+        } else {
+            $data['validation'] = $this->validator;
+            $data['title'] = 'Data Pegawai';
+
+            echo view('layout/v_header', $data);
+            echo view('layout/v_sidebar');
+            echo view('layout/v_navbar');
+            echo view('pegawai/add', $data);
+            echo view('layout/v_footer');
         }
-        
     }
 
-    public function edit($id){
+    public function edit($id_pegawai){
         $model = new PegawaiModel;
+        $data['session'] = session();
         $data['title'] = 'Data Pegawai - Edit';
-        $data['getPegawai'] = $model->getPegawai($id);
+        $data['getPegawai'] = $model->getPegawaiById($id_pegawai);
 
         echo view('layout/v_header', $data);
+        echo view('layout/v_sidebar');
         echo view('layout/v_navbar');
         echo view('pegawai/edit', $data);
         echo view('layout/v_footer');
     }
 
     public function update(){
-        $model = new PegawaiModel;
+        $data['session'] = session();
+        $rules = [
+            'name' => 'required'
+        ];
+     
+        if($this->validate($rules)){
+            $model = new PegawaiModel();
+            $id_pegawai = $this->request->getVar('id_pegawai');
 
-        $data = array(
-            'id' => $this->request->getPost('id'),
-            'nip' => $this->request->getPost('nip'),
-            'nama' => $this->request->getPost('nama'),
-            'gender' => $this->request->getPost('gender'),
-            'telp' => $this->request->getPost('telp'),
-            'email' => $this->request->getPost('email'),
-            'pendidikan' => $this->request->getPost('pendidikan')
-        );
-        $model->updatePegawai($data);
+                $data = [
+                    'name' => $this->request->getVar('name')
+                ];
 
-        echo '<script>
-                alert("Selamat! Berhasil Mengubah Data Pegawai");
-                window.location="' . base_url('pegawai') . '"
-            </script>';
+                $model->update($id_pegawai, $data);
+         
+                echo '<script>
+                    alert("Selamat! Berhasil Mengubah Data Pegawai");
+                    window.location="' . base_url('pegawai_master') . '"
+                </script>';
+            }
+        else {
+            $data['validation'] = $this->validator;
+            $data['title'] = 'Data Pegawai';
+
+            echo view('layout/v_header', $data);
+            echo view('layout/v_navbar');
+            echo view('pegawai/add', $data);
+            echo view('layout/v_footer');
+        }
+
     }
 
-
-    public function delete($id){
+    public function delete($id_pegawai){
         $model = new PegawaiModel;
-        $model->delete($id);
+        $model->delete($id_pegawai);
         echo '<script>
                 alert("Selamat! Berhasil Menghapus Data Pegawai");
-                window.location="' . base_url('pegawai') . '"
+                window.location="' . base_url('pegawai_master') . '"
             </script>';
     }
 }

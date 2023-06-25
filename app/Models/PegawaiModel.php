@@ -8,13 +8,13 @@ class PegawaiModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'tbl_pegawai';
-    protected $primaryKey       = 'id';
+    protected $primaryKey       = 'id_pegawai';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nip','nama','gender','telp','email','pendidikan'];
+    protected $allowedFields    = ['id_user','nomor_induk','nama_pegawai'];
 
     // Dates
     protected $useTimestamps = false;
@@ -40,6 +40,7 @@ class PegawaiModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
+
     public function getPegawai($id = false)
     {
         if ($id === false) {
@@ -53,7 +54,7 @@ class PegawaiModel extends Model
             // return $this->getWhere(['id' => $id]);
 
             // Manual atau Query Builder
-            $query = $this->db->query("SELECT * FROM tbl_pegawai where id = '$id' ");
+            $query = $this->db->query("SELECT * FROM tbl_pegawai where id_pegawai = '$id' ");
             return $query->getResult(); // return berupa array objek
         }
     }
@@ -80,37 +81,6 @@ class PegawaiModel extends Model
     {
         $query = $this->db->query("SELECT * FROM tbl_pegawai where id_user = '$id' ");
         return $query->getResult(); // return berupa array objek
-    }
- 
-    public function savePegawai($data)
-    {
-        // $builder = $this->db->table($this->table);
-        // return $builder->insert($data);
-
-        // Manual atau Quert Builder
-        $nip = $data['nip'];
-        $nama = $data['nama'];
-        $gender = $data['gender'];
-        $telp = $data['telp'];
-        $email = $data['email'];
-        $pendidikan = $data['pendidikan'];
-        $query = $this->db->query("INSERT INTO tbl_pegawai (nip,nama,gender,telp,email,pendidikan) VALUES('$nip','$nama','$gender','$telp','$email','$pendidikan')");
-        return $query;
-    }
-
-    public function updatePegawai($data)
-    {
-
-        // Manual atau Quert Builder
-        $id = $data['id'];
-        $nip = $data['nip'];
-        $nama = $data['nama'];
-        $gender = $data['gender'];
-        $telp = $data['telp'];
-        $email = $data['email'];
-        $pendidikan = $data['pendidikan'];
-        $query = $this->db->query("UPDATE tbl_pegawai SET nip='$nip', nama='$nama', gender='$gender', telp='$telp', email='$email', pendidikan='$pendidikan' WHERE id='$id'");
-        return $query;
     }
     
 }

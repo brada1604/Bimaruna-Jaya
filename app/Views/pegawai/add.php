@@ -1,77 +1,143 @@
-        <tr align="center">
-            <td colspan="5">
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
 
-                <form action="/pegawai/save" method="post">        
-                    <table>
-                        <tr>
-                            <td colspan="2">                                
-                                <?php if(session()->getFlashdata('msg')):?>
-                                    <label style="color: red;"> <?= session()->getFlashdata('msg') ?> </label>
-                                <?php endif;?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Nip</td>
-                            <td><input type="number" name="nip" required value="<?= old('nip') ?>"></td>                 
-                        </tr>   
-                        <tr>
-                            <td>Nama</td>
-                            <td><input type="text" name="nama" required value="<?= old('nama') ?>"></td>                    
-                        </tr>   
-                        <tr>
-                            <td>Gender</td>
-                            <td>
-                                <?php if(old('gender') == 'Pria') :?>
-                                    <input type="radio" name="gender" value="Pria" checked> Pria
-                                <?php else:?>
-                                    <input type="radio" name="gender" value="Pria"> Pria
-                                <?php endif?>
-                                <?php if(old('gender') == 'Wanita') :?>
-                                    <input type="radio" name="gender" value="Wanita"checked> Wanita
-                                <?php else:?>
-                                    <input type="radio" name="gender" value="Wanita"> Wanita
-                                <?php endif?>
-                            </td>                  
-                        </tr>  
-                        <tr>
-                            <td>Telepon</td>
-                            <td><input type="number" name="telp" required value="<?= old('telp') ?>"></td>                  
-                        </tr> 
-                        <tr>
-                            <td>Email</td>
-                            <td><input type="text" name="email" required value="<?= old('email') ?>"></td>                  
-                        </tr> 
-                        <tr>
-                            <td>Pendidikan</td>
-                            <td>
-                                <select name="pendidikan" required>
-                                    <option value="">-- Pilih Pendidikan -- </option>
-                                    <?php if(old('pendidikan') == 'SD') :?>
-                                        <option value="SD" selected>SD</option>
-                                    <?php else:?>
-                                        <option value="SD">SD</option>
-                                    <?php endif?>
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">Tambah Pegawai</h1>
+                    
+                    <form action="<?= base_url(); ?>/pegawai/save" method="post" enctype="multipart/form-data">
 
-                                    <?php if(old('pendidikan') == 'SMP') :?>
-                                        <option value="SMP" selected>SMP</option>
-                                    <?php else:?>
-                                        <option value="SMP">SMP</option>
-                                    <?php endif?>
+                        <div class="row card-group-row">
 
-                                    <?php if(old('pendidikan') == 'SMA') :?>
-                                        <option value="SMA" selected>SMA</option>
-                                    <?php else:?>
-                                        <option value="SMA">SMA</option>
-                                    <?php endif?>
-                                </select>
-                            </td>                  
-                        </tr>  
-                        <tr>
-                            <td></td>
-                            <td><input type="submit" value="Simpan"></td>                   
-                        </tr>               
-                    </table>
-                </form>
-                
-            </td>
-        </tr>
+                            <?php if (isset($validation)) { ?>
+                                <div class="col-md-12">
+                                    <?php foreach ($validation->getErrors() as $error) : ?>
+                                        <div class="alert alert-warning" role="alert">
+                                            <i class="mdi mdi-alert-outline me-2"></i>
+                                            <?= esc($error) ?>
+                                        </div>
+                                    <?php endforeach ?>
+                                </div>
+                            <?php } ?>
+
+                            <div class="col-md-12">
+                                <div class="list-group list-group-flush">
+                                    
+                                    <!-- ROLE -->
+                                    <div class="list-group-item p-3">
+                                        <div class="row align-items-start">
+                                            <div class="col-md-2 mb-8pt mb-md-0">
+                                                <div class="media align-items-left">
+                                                    <div class="d-flex flex-column media-body media-middle">
+                                                        <span
+                                                        class="card-title">Role User</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col mb-8pt mb-md-0">
+                                                <input name="role" value="Pegawai" type="text" class="form-control" readonly/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                     <!-- NOMOR INDUK -->
+                                    <div class="list-group-item p-3">
+                                        <div class="row align-items-start">
+                                            <div class="col-md-2 mb-8pt mb-md-0">
+                                                <div class="media align-items-left">
+                                                    <div class="d-flex flex-column media-body media-middle">
+                                                        <span
+                                                        class="card-title">Nomor Induk</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col mb-8pt mb-md-0">
+                                                <input name="nomor_induk" value="<?= old('nomor_induk') ?>" type="number" class="form-control" placeholder="Masukan Nomor Induk" required/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- NAMA -->
+                                    <div class="list-group-item p-3">
+                                        <div class="row align-items-start">
+                                            <div class="col-md-2 mb-8pt mb-md-0">
+                                                <div class="media align-items-left">
+                                                    <div class="d-flex flex-column media-body media-middle">
+                                                        <span
+                                                        class="card-title">Nama User / Pegawai </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col mb-8pt mb-md-0">
+                                                <input name="name" value="<?= old('name') ?>" type="text" class="form-control" placeholder="Masukan Nama User" required/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- EMAIL -->
+                                    <div class="list-group-item p-3">
+                                        <div class="row align-items-start">
+                                            <div class="col-md-2 mb-8pt mb-md-0">
+                                                <div class="media align-items-left">
+                                                    <div class="d-flex flex-column media-body media-middle">
+                                                        <span
+                                                        class="card-title">Email User</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col mb-8pt mb-md-0">
+                                                <input name="email" value="<?= old('email') ?>" type="email" class="form-control" placeholder="Masukan Email User" required/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- PASSWORD -->
+                                    <div class="list-group-item p-3">
+                                        <div class="row align-items-start">
+                                            <div class="col-md-2 mb-8pt mb-md-0">
+                                                <div class="media align-items-left">
+                                                    <div class="d-flex flex-column media-body media-middle">
+                                                        <span
+                                                        class="card-title">Password User</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col mb-8pt mb-md-0">
+                                                <input name="password" value="<?= old('password') ?>" type="password" class="form-control" placeholder="Masukan Password User" required/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- PASSWORD -->
+                                    <div class="list-group-item p-3">
+                                        <div class="row align-items-start">
+                                            <div class="col-md-2 mb-8pt mb-md-0">
+                                                <div class="media align-items-left">
+                                                    <div class="d-flex flex-column media-body media-middle">
+                                                        <span
+                                                        class="card-title">Confirm Password User</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col mb-8pt mb-md-0">
+                                                <input name="confirm_password" value="<?= old('confirm_password') ?>" type="password" class="form-control" placeholder="Masukan Password User" required/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col align-items-right">
+                                <button type="submit" class="btn btn-dark">Simpan</button>
+                            </div>
+                        </div>
+
+                    </form>  
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
