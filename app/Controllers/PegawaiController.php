@@ -85,7 +85,7 @@ class PegawaiController extends BaseController
         $model = new PegawaiModel;
         $data['session'] = session();
         $data['title'] = 'Data Pegawai - Edit';
-        $data['getPegawai'] = $model->getPegawaiById($id_pegawai);
+        $data['getPegawai'] = $model->getPegawai($id_pegawai);
 
         echo view('layout/v_header', $data);
         echo view('layout/v_sidebar');
@@ -97,24 +97,33 @@ class PegawaiController extends BaseController
     public function update(){
         $data['session'] = session();
         $rules = [
-            'name' => 'required'
+            'nama_pegawai' => 'required'
         ];
      
         if($this->validate($rules)){
-            $model = new PegawaiModel();
+            $model_pegawai = new PegawaiModel();
             $id_pegawai = $this->request->getVar('id_pegawai');
 
-                $data = [
-                    'name' => $this->request->getVar('name')
-                ];
+            $data_pegawai = [
+                'nama_pegawai' => $this->request->getVar('nama_pegawai')
+            ];
 
-                $model->update($id_pegawai, $data);
-         
-                echo '<script>
-                    alert("Selamat! Berhasil Mengubah Data Pegawai");
-                    window.location="' . base_url('pegawai_master') . '"
-                </script>';
-            }
+            $model_pegawai->update($id_pegawai, $data_pegawai);
+
+            $model_user = new UserModel();
+            $id_user = $this->request->getVar('id_user');
+
+            $data_user = [
+                'name' => $this->request->getVar('nama_pegawai')
+            ];
+
+            $model_user->update($id_user, $data_user);
+     
+            echo '<script>
+                alert("Selamat! Berhasil Mengubah Data Pegawai");
+                window.location="' . base_url('pegawai_master') . '"
+            </script>';
+        }
         else {
             $data['validation'] = $this->validator;
             $data['title'] = 'Data Pegawai';

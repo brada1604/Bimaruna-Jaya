@@ -2,13 +2,13 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Edit User</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Edit Pegawai</h1>
 
                     <?php
-                        foreach($getUser as $row):
+                        foreach($getPegawai as $row):
                     ?>
 
-                    <form action="<?= base_url(); ?>/user/update" method="post" enctype="multipart/form-data">
+                    <form action="<?= base_url(); ?>/pegawai/update" method="post" enctype="multipart/form-data">
 
                         <div class="row card-group-row">
 
@@ -26,21 +26,22 @@
                             <div class="col-md-12">
                                 <div class="list-group list-group-flush">
     
-                                    <input name="id" type="hidden" class="form-control" value="<?= $row->id; ?>" readonly/>
+                                    <input name="id_user" type="hidden" class="form-control" value="<?= $row->id_user; ?>" readonly/>
+                                    <input name="id_pegawai" type="hidden" class="form-control" value="<?= $row->id_pegawai; ?>" readonly/>
 
-                                    <!-- ROLE -->
+                                    <!-- NOMOR INDUK -->
                                     <div class="list-group-item p-3">
                                         <div class="row align-items-start">
                                             <div class="col-md-2 mb-8pt mb-md-0">
                                                 <div class="media align-items-left">
                                                     <div class="d-flex flex-column media-body media-middle">
                                                         <span
-                                                        class="card-title">Role User</span>
+                                                        class="card-title">Nomor Induk</span>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col mb-8pt mb-md-0">
-                                                <input name="role" value="Operator" type="text" class="form-control" readonly/>
+                                                <input name="nomor_induk" value="<?= $row->nomor_induk; ?>" type="text" class="form-control" readonly/>
                                             </div>
                                         </div>
                                     </div>
@@ -52,12 +53,12 @@
                                                 <div class="media align-items-left">
                                                     <div class="d-flex flex-column media-body media-middle">
                                                         <span
-                                                        class="card-title">Nama User</span>
+                                                        class="card-title">Nama Pegawai</span>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col mb-8pt mb-md-0">
-                                                <input name="name" value="<?= $row->name; ?>" type="text" class="form-control" placeholder="Masukan Nama User" required/>
+                                                <input name="nama_pegawai" value="<?= $row->nama_pegawai; ?>" type="text" class="form-control" placeholder="Masukan Nama Pegawai" required/>
                                             </div>
                                         </div>
                                     </div>
