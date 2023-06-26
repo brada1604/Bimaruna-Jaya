@@ -2,17 +2,19 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Master User</h1>
-                    <p class="mb-4">Data untuk memanage User.</p>
-                    <a class="edit" href="/user/add"><button type="button" class="btn btn-primary">Tambah</button></a>
+                    <!-- <h1 class="h3 mb-2 text-gray-800">Master Scanner</h1> -->
+                    <!-- <a class="edit" href="/user/add"><button type="button" class="btn btn-primary">Tambah</button></a> -->
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Data User</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Scanner</h6>
                         </div>
 
-                        <div id="reader" width="600px"></div>
+                        <center>
+                            
+                            <div class="col-md-6" id="reader"></div>
+                        </center>
 
                         <div class="card-body">
                             <div class="table-responsive">
@@ -56,6 +58,7 @@
 <script type="text/javascript">
     function onScanSuccess(decodedText, decodedResult) {
   // handle the scanned code as you like, for example:
+  alert("hai" + decodedText);
   console.log(`Code matched = ${decodedText}`, decodedResult);
 }
 
@@ -67,7 +70,7 @@ function onScanFailure(error) {
 
 let html5QrcodeScanner = new Html5QrcodeScanner(
   "reader",
-  { fps: 10, qrbox: {width: 250, height: 250} },
+  { fps: 30, qrbox: {width: 300, height: 300} },
   /* verbose= */ false);
 html5QrcodeScanner.render(onScanSuccess, onScanFailure);
 </script>
