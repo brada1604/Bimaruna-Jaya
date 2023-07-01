@@ -14,11 +14,18 @@ class AbsenController extends BaseController
         $data['session'] = session();
         $data['title'] = 'Data Absen';
 
-        if (session()->id == '1') {
-            $data['getAbsen'] = $model->getAbsen();
+        if (session()->role != '3') {
+            if (session()->id == '1') {
+                $data['getAbsen'] = $model->getAbsen();
+            }
+            else{
+                $data['getAbsen'] = $model->getAbsen(session()->id);
+            }
         }
         else{
-            $data['getAbsen'] = $model->getAbsen(session()->id);
+            $model_pegawai = new PegawaiModel();
+            $data_pegawai = $model_pegawai->getPegawaiByIdUser(session()->id);
+            $data['getAbsen'] = $model->getAbsenByIdNomorInduk($data_pegawai[0]->nomor_induk);
         }
 
         echo view('layout/v_header', $data);

@@ -52,4 +52,10 @@ class AbsenModel extends Model
         }
     }
 
+    public function getAbsenByIdNomorInduk($nomor_induk)
+    {
+        $query = $this->db->query("SELECT * FROM v_absen where nomor_induk = '$nomor_induk' ");
+        return $query->getResult();
+    }
+
 }
