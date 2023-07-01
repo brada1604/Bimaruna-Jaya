@@ -77,6 +77,12 @@ class PegawaiModel extends Model
         }
     }
 
+    public function getPegawaiByNomorInduk($nomor_induk)
+    {
+        $query = $this->db->query("SELECT * FROM tbl_pegawai where nomor_induk = '$nomor_induk' ");
+        return $query->getResult(); // return berupa array objek
+    }
+
     public function getPegawaiByIdUser($id = false)
     {
         $query = $this->db->query("SELECT * FROM tbl_pegawai where id_user = '$id' ");

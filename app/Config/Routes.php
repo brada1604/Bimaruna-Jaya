@@ -87,6 +87,7 @@ $routes->get('/pegawai/delete/(:segment)', 'PegawaiController::delete/$1', ['fil
 
 // ROUTES ABSEN
 $routes->get('/absen_master', 'AbsenController::index', ['filter' => 'auth']);
+$routes->get('/absen/absen_pegawai/(:segment)', 'AbsenController::absen_pegawai/$1', ['filter' => 'auth']);
 
 
 

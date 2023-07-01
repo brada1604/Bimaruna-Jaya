@@ -18,4 +18,6 @@ class ScannerController extends BaseController
         echo view('scanner/index', $data);
         echo view('layout/v_footer');
     }
+
+    
 }
