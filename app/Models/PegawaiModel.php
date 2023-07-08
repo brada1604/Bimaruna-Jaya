@@ -14,7 +14,7 @@ class PegawaiModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_user', 'id_jabatan', 'id_divisi', 'nomor_induk', 'nama_pegawai', 'lead', 'gender', 'tgl_lahir', 'tgl_masuk'];
+    protected $allowedFields    = ['id_user', 'id_jabatan', 'id_divisi', 'nomor_induk', 'nama_pegawai', 'pendidikan', 'lead', 'gender', 'tgl_lahir', 'tgl_masuk'];
 
     
 
@@ -49,14 +49,14 @@ class PegawaiModel extends Model
             // return $this->findAll();
 
             // Manual atau Query Builder
-            $query = $this->db->query("SELECT * FROM tbl_pegawai");
+            $query = $this->db->query("SELECT * FROM v_pegawai");
             return $query->getResult(); // return berupa array objek
 
         } else {
             // return $this->getWhere(['id' => $id]);
 
             // Manual atau Query Builder
-            $query = $this->db->query("SELECT * FROM tbl_pegawai where id_pegawai = '$id' ");
+            $query = $this->db->query("SELECT * FROM v_pegawai where id_pegawai = '$id' ");
             return $query->getResult(); // return berupa array objek
         }
     }
