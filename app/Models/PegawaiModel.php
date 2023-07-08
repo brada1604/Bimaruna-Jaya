@@ -46,14 +46,12 @@ class PegawaiModel extends Model
     public function getPegawai($id = false)
     {
         if ($id === false) {
-            // return $this->findAll();
 
             // Manual atau Query Builder
             $query = $this->db->query("SELECT * FROM v_pegawai");
             return $query->getResult(); // return berupa array objek
 
         } else {
-            // return $this->getWhere(['id' => $id]);
 
             // Manual atau Query Builder
             $query = $this->db->query("SELECT * FROM v_pegawai where id_pegawai = '$id' ");

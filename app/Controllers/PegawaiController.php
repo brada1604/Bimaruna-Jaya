@@ -109,9 +109,12 @@ class PegawaiController extends BaseController
     }
 
     public function edit($id_pegawai){
-        $data['session'] = $this->session;
         $data['title'] = 'Data Pegawai - Edit';
-        $data['getPegawai'] = $this->model_pegawai->getPegawai($id_pegawai);
+        $data['session'] = $this->session;
+        $data['getPegawaiMaster'] = $this->model_pegawai->getPegawai($id_pegawai);
+        $data['getPegawai'] = $this->model_pegawai->findAll();
+        $data['getJabatan'] = $this->model_jabatan->findAll();
+        $data['getDivisi'] = $this->model_divisi->findAll();
 
         echo view('layout/v_header', $data);
         echo view('layout/v_sidebar');
@@ -130,7 +133,14 @@ class PegawaiController extends BaseController
             $id_pegawai = $this->request->getVar('id_pegawai');
 
             $data_pegawai = [
-                'nama_pegawai' => $this->request->getVar('nama_pegawai')
+                'id_jabatan' => $this->request->getVar('id_jabatan'),
+                'id_divisi' => $this->request->getVar('id_divisi'),
+                'nama_pegawai' => $this->request->getVar('nama_pegawai'),
+                'pendidikan' => $this->request->getVar('pendidikan'),
+                'lead' => $this->request->getVar('lead'),
+                'gender' => $this->request->getVar('gender'),
+                'tgl_lahir' => $this->request->getVar('tgl_lahir'),
+                'tgl_masuk' => $this->request->getVar('tgl_masuk')
             ];
 
             $this->model_pegawai->update($id_pegawai, $data_pegawai);
@@ -150,12 +160,15 @@ class PegawaiController extends BaseController
             </script>';
         }
         else {
-            $data['validation'] = $this->validator;
             $data['title'] = 'Data Pegawai';
+            $data['validation'] = $this->validator;
+            $data['getPegawai'] = $this->model_pegawai->findAll();
+            $data['getJabatan'] = $this->model_jabatan->findAll();
+            $data['getDivisi'] = $this->model_divisi->findAll();
 
             echo view('layout/v_header', $data);
             echo view('layout/v_navbar');
-            echo view('pegawai/add', $data);
+            echo view('pegawai/edit', $data);
             echo view('layout/v_footer');
         }
 
