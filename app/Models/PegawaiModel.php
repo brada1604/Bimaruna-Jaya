@@ -14,7 +14,9 @@ class PegawaiModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_user','nomor_induk','nama_pegawai'];
+    protected $allowedFields    = ['id_user', 'id_jabatan', 'id_divisi', 'nomor_induk', 'nama_pegawai', 'lead', 'gender', 'tgl_lahir', 'tgl_masuk'];
+
+    
 
     // Dates
     protected $useTimestamps = false;
