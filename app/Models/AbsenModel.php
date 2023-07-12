@@ -58,4 +58,9 @@ class AbsenModel extends Model
         return $query->getResult();
     }
 
+    public function getTotalHadirAllPegawaiPerhari(){
+        $query = $this->db->query("SELECT * FROM v_total_hadir_semua_pegawai_perhari ");
+        return $query->getResult();
+    }
+
 }
