@@ -69,6 +69,25 @@
      	CKEDITOR.replace( 'editor1' );
  	</script>
 
+    <script type="text/javascript">
+        function updateTime() {
+            var now = new Date();
+            var days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+            var day = days[now.getDay()];
+            var date = now.getDate();
+            var months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+            var month = months[now.getMonth()];
+            var year = now.getFullYear();
+            var hours = String(now.getHours()).padStart(2, '0'); // Menambahkan "0" di depan jika jam < 10
+            var minutes = String(now.getMinutes()).padStart(2, '0'); // Menambahkan "0" di depan jika menit < 10
+            var seconds = String(now.getSeconds()).padStart(2, '0'); // Menambahkan "0" di depan jika detik < 10
+            var formattedTime = day + ', ' + date + ' ' + month + ' ' + year + ' ' + hours + ':' + minutes + ':' + seconds;
+            document.getElementById('time_now').innerHTML = formattedTime;
+        }
+
+        setInterval(updateTime, 1000);
+    </script>
+
 </body>
 
 </html>

@@ -62,6 +62,14 @@
                 </li>
             <?php endif ?>
 
+            <?php if ($session->get('role') == 1 || $session->get('role') == 2 || $session->get('role') == 3): ?>
+                <li class="nav-item <?= ($url1 == 'surat_master') ? "active" : "";?>">
+                    <a class="nav-link" href="/surat_master">
+                        <i class="fas fa-fw fa-folder"></i>
+                        <span>Surat</span></a>
+                </li>
+            <?php endif ?>
+
 
             <?php if ($session->get('role') == 1 || $session->get('role') == 2): ?>
             <!-- Divider -->

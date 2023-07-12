@@ -60,4 +60,30 @@ class AbsenController extends BaseController
         
         return redirect()->to('/scanner_master');
     }
+
+    public function absen_pegawai_manual(){
+        $data['session'] = session();
+
+        $model_pegawai = new PegawaiModel();
+        $data_pegawai = $model_pegawai->getPegawaiByNomorInduk($this->request->getVar('nomor_induk'));
+
+        $model_absen = new AbsenModel();
+
+        if($data_pegawai){
+            $data_absen = [
+                'id_petugas' => session()->id,
+                'id_pegawai' => $data_pegawai[0]->id_pegawai
+            ];            
+            
+            $model_absen->save($data_absen); 
+            
+            session()->setFlashdata("success", "Terimakasih telah melakukan absensi kehadiran. A.N. <b>".$data_pegawai[0]->nama_pegawai."</b> dengan Nomor Induk <b>".$data_pegawai[0]->nomor_induk."</b>. Sampai Jumpa Kembali!");
+        }
+
+        else {
+            session()->setFlashdata("error", "Erorr! Data tidak ditemukan. Sampai Jumpa Kembali!");
+        }            
+        
+        return redirect()->to('/scanner_master');
+    }
 }

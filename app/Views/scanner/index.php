@@ -40,6 +40,28 @@
 
                     </div>
 
+                    <form action="<?= base_url(); ?>/absen/absen_pegawai_manual" method="post" enctype="multipart/form-data">
+                        <div class="row card-group-row">
+                            <div class="col-md-12">
+                                <div class="list-group list-group-flush">
+                                    
+                                    <!-- NOMOR INDUK -->
+                                    <div class="list-group-item p-3">
+                                        <div class="row align-items-start">
+                                            <div class="col mb-8pt mb-md-0">
+                                                <input name="nomor_induk" type="number" class="form-control" required placeholder="Input Nomor Induk Pegawai" />
+                                            </div>
+                                            <div class="col mb-8pt mb-md-0">
+                                                <button type="submit" class="btn btn-dark">Submit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </form>  
+
                 </div>
                 <!-- /.container-fluid -->
 
@@ -75,7 +97,7 @@
     setTimeout(function () {
         // Closing the alert
         $('#alert').alert('close');
-    }, 5000);
+    }, 10000);
 
     // Mencari elemen alert berdasarkan ID
     var alertElement = document.getElementById("alert");
@@ -85,7 +107,7 @@
 
     // Mencari elemen countdown di dalam elemen alert
     var countdownElement = document.createElement("span");
-    countdownElement.innerText = "5"; // Angka awal countdown
+    countdownElement.innerText = "10"; // Angka awal countdown
     alertElement.appendChild(countdownElement);
 
     // Menambahkan event listener ke tombol close
@@ -95,7 +117,7 @@
     });
 
     // Mengatur countdown
-    var countdown = 5;
+    var countdown = 10;
     var countdownInterval = setInterval(function() {
         countdown--;
         countdownElement.innerText = countdown; // Mengupdate angka countdown

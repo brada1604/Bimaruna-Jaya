@@ -1,3 +1,4 @@
+ <?php date_default_timezone_set('Asia/Jakarta');?>
   		<!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
@@ -54,6 +55,13 @@
                         </li>
 
                         <!-- Nav Item - Alerts -->
+                        <li class="nav-item">
+                            <!-- <span class="font-weight-bold">A new monthly report is ready to download!</span> -->
+                            <a class="nav-link" href="#" >
+                                <span class="font-weight-bold text-dark" id="time_now"></span>
+                            </a>
+                        </li>
+
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
