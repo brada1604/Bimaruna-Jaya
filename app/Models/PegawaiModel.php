@@ -59,6 +59,12 @@ class PegawaiModel extends Model
         }
     }
 
+    public function getIdentitasPegawai($id)
+    {
+        $query = $this->db->query("SELECT * FROM v_pegawai where id_user = '$id' ");
+        return $query->getResult(); // return berupa array objek
+    }
+
     public function getPegawaiByNama($nama)
     {
         if ($nama === false) {

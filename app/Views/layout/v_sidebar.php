@@ -105,6 +105,14 @@
                 Pengaturan
             </div>
 
+            <?php if ($session->get('role') == 3): ?>
+                <li class="nav-item <?= ($url1 == 'identitas_master') ? "active" : "";?>">
+                    <a class="nav-link" href="/identitas_master">
+                        <i class="fas fa-fw  fa-user"></i>
+                        <span>Identitas</span></a>
+                </li>
+            <?php endif ?>   
+
             <!-- Nav Item - Tables -->
             <li class="nav-item <?= ($url1 == 'user' && $url2 == 'profil') ? "active" : "";?>">
                 <a class="nav-link" href="/user/profil">

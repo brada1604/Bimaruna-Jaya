@@ -92,6 +92,9 @@ $routes->get('/absen/absen_pegawai/(:segment)', 'AbsenController::absen_pegawai/
 $routes->post('/absen/absen_pegawai_manual', 'AbsenController::absen_pegawai_manual', ['filter' => 'auth']);
 
 
+// ROUTES ABSEN
+$routes->get('/identitas_master', 'IdentitasController::index', ['filter' => 'auth']);
+
 
 
 // ROUTE DASHBOARD

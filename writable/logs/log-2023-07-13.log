@@ -1,0 +1,24 @@
+CRITICAL - 2023-07-13 00:16:11 --> Undefined variable $getUser
+in APPPATH\Views\identitas\index.php on line 8.
+ 1 APPPATH\Views\identitas\index.php(8): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $getUser', 'APPPATH\\Views\\identitas\\index.php', 8)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\identitas\\index.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('identitas/index', [], true)
+ 5 APPPATH\Controllers\IdentitasController.php(35): view('identitas/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\IdentitasController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IdentitasController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-07-13 00:16:39 --> Undefined property: stdClass::$id
+in APPPATH\Views\identitas\index.php on line 36.
+ 1 APPPATH\Views\identitas\index.php(36): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$id', 'APPPATH\\Views\\identitas\\index.php', 36)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\identitas\\index.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('identitas/index', [], true)
+ 5 APPPATH\Controllers\IdentitasController.php(35): view('identitas/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\IdentitasController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IdentitasController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
