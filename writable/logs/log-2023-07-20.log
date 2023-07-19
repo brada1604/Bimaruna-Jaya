@@ -1,0 +1,40 @@
+CRITICAL - 2023-07-20 00:28:09 --> Undefined property: stdClass::$total_data
+in APPPATH\Controllers\AbsenController.php on line 114.
+ 1 APPPATH\Controllers\AbsenController.php(114): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$total_data', 'APPPATH\\Controllers\\AbsenController.php', 114)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\AbsenController->absen_pegawai_manual()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AbsenController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-07-20 00:28:32 --> Undefined array key 0
+in APPPATH\Controllers\AbsenController.php on line 135.
+ 1 APPPATH\Controllers\AbsenController.php(135): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'APPPATH\\Controllers\\AbsenController.php', 135)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\AbsenController->absen_pegawai_manual()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AbsenController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-07-20 00:31:05 --> Undefined array key 0
+in APPPATH\Controllers\AbsenController.php on line 135.
+ 1 APPPATH\Controllers\AbsenController.php(135): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'APPPATH\\Controllers\\AbsenController.php', 135)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\AbsenController->absen_pegawai_manual()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AbsenController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-07-20 00:31:23 --> Undefined array key 0
+in APPPATH\Controllers\AbsenController.php on line 135.
+ 1 APPPATH\Controllers\AbsenController.php(135): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'APPPATH\\Controllers\\AbsenController.php', 135)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\AbsenController->absen_pegawai_manual()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AbsenController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-07-20 00:37:34 --> Undefined array key 0
+in APPPATH\Controllers\AbsenController.php on line 133.
+ 1 APPPATH\Controllers\AbsenController.php(133): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'APPPATH\\Controllers\\AbsenController.php', 133)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\AbsenController->absen_pegawai_manual()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AbsenController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')

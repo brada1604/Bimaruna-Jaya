@@ -90,6 +90,9 @@ $routes->get('/absen_master', 'AbsenController::index', ['filter' => 'auth']);
 $routes->get('/absen_master_pegawai', 'AbsenController::index', ['filter' => 'auth']);
 $routes->get('/absen/absen_pegawai/(:segment)', 'AbsenController::absen_pegawai/$1', ['filter' => 'auth']);
 $routes->post('/absen/absen_pegawai_manual', 'AbsenController::absen_pegawai_manual', ['filter' => 'auth']);
+$routes->post('/absen/upload_surat_absen', 'AbsenController::upload_surat_absen', ['filter' => 'auth']);
+$routes->get('/absen/update_konfirmasi_petugas/(:segment)/(:segment)', 'AbsenController::update_konfirmasi_petugas/$1/$2', ['filter' => 'auth']);
+$routes->get('/absen/update_status_kehadiran/(:segment)/(:segment)', 'AbsenController::update_status_kehadiran/$1/$2', ['filter' => 'auth']);
 
 
 // ROUTES ABSEN

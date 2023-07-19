@@ -28,11 +28,9 @@ class DashboardController extends BaseController
         if (session()->get('role') == 1) { // Role : Administrator
             $data['title'] = 'Dashboard Administrator';
             $data['getTotalHadirAllPegawaiPerhari'] = 0;
-            $data['getTotalHadirAllPegawaiPerhari'] = $this->model_absen->getTotalHadirAllPegawaiPerhari();
+            // $data['getTotalHadirAllP egawaiPerhari'] = $this->model_absen->getTotalHadirAllPegawaiPerhari();
             // $data['getTotalHadirAllPegawaiPerhari'] = $this->model_absen->getTotalHadirAllPegawaiPerhari()[0]->total_hadir;
 
-            var_dump($data['getTotalHadirAllPegawaiPerhari']);
-            die();
 
             echo view('layout/v_header', $data);
             echo view('layout/v_sidebar');

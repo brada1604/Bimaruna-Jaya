@@ -49,7 +49,7 @@
                                     <div class="list-group-item p-3">
                                         <div class="row align-items-start">
                                             <div class="col mb-8pt mb-md-0">
-                                                <input name="nomor_induk" type="number" class="form-control" required placeholder="Input Nomor Induk Pegawai" />
+                                                <input name="nomor_induk" type="number" class="form-control" required placeholder="Input Manual Nomor Induk Pegawai" />
                                             </div>
                                             <div class="col mb-8pt mb-md-0">
                                                 <button type="submit" class="btn btn-dark">Submit</button>

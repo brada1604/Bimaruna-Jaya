@@ -45,24 +45,42 @@ class AbsenModel extends Model
     public function getAbsen($id_petugas = false)
     {
         if ($id_petugas === false) {
-            $query = $this->db->query("SELECT * FROM v_absen");
+            $query = $this->db->query("SELECT * FROM v_absen_master");
             return $query->getResult(); // return berupa array objek
 
         } else {
-            $query = $this->db->query("SELECT * FROM v_absen where id_petugas = '$id_petugas' ");
+            $query = $this->db->query("SELECT * FROM v_absen_master where id_petugas = '$id_petugas' ");
             return $query->getResult();
         }
     }
 
     public function getAbsenByIdNomorInduk($nomor_induk)
     {
-        $query = $this->db->query("SELECT * FROM v_absen where nomor_induk = '$nomor_induk' ");
+        $query = $this->db->query("SELECT * FROM v_absen_master where nomor_induk = '$nomor_induk' ");
         return $query->getResult();
     }
 
     public function getAbsenByIdNomorIndukByWaktuIn($nomor_induk)
     {
         $query = $this->db->query("SELECT * from v_absen_master WHERE nomor_induk = '$nomor_induk' AND waktu_in = CURRENT_DATE()");
+        return $query->getResult();
+    }
+
+    public function getAbsenByIdNomorIndukByCreatedAt($nomor_induk)
+    {
+        $query = $this->db->query("SELECT * from v_absen_master WHERE nomor_induk = '$nomor_induk' AND date(created_at) = CURRENT_DATE()");
+        return $query->getResult();
+    }
+
+    public function getTotalAbsenByIdNomorIndukByWaktuIn($nomor_induk)
+    {
+        $query = $this->db->query("SELECT COUNT(*) as total_data from v_absen_master WHERE nomor_induk = '$nomor_induk' AND (waktu_in = CURRENT_DATE() OR date(created_at) = CURRENT_DATE())");
+        return $query->getResult();
+    }
+
+    public function getTotalAbsenByIdNomorIndukNotHadir($nomor_induk)
+    {
+        $query = $this->db->query("SELECT count(*) as total_data from v_absen_master WHERE nomor_induk = '$nomor_induk' AND date(created_at) = CURRENT_DATE() AND status_kehadiran != 'HADIR'");
         return $query->getResult();
     }
 
