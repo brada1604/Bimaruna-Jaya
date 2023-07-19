@@ -14,7 +14,9 @@ class AbsenModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ["id_petugas", "id_pegawai"];
+    protected $allowedFields    = ['id_petugas','id_pegawai','in','out','status_kehadiran','file','konfirmasi_petugas',];
+
+
 
     // Dates
     protected $useTimestamps = false;
@@ -55,6 +57,12 @@ class AbsenModel extends Model
     public function getAbsenByIdNomorInduk($nomor_induk)
     {
         $query = $this->db->query("SELECT * FROM v_absen where nomor_induk = '$nomor_induk' ");
+        return $query->getResult();
+    }
+
+    public function getAbsenByIdNomorIndukByWaktuIn($nomor_induk)
+    {
+        $query = $this->db->query("SELECT * from v_absen_master WHERE nomor_induk = '$nomor_induk' AND waktu_in = CURRENT_DATE()");
         return $query->getResult();
     }
 

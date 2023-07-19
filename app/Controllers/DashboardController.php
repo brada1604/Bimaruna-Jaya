@@ -27,7 +27,12 @@ class DashboardController extends BaseController
 
         if (session()->get('role') == 1) { // Role : Administrator
             $data['title'] = 'Dashboard Administrator';
-            $data['getTotalHadirAllPegawaiPerhari'] = $this->model_absen->getTotalHadirAllPegawaiPerhari()[0]->total_hadir;
+            $data['getTotalHadirAllPegawaiPerhari'] = 0;
+            $data['getTotalHadirAllPegawaiPerhari'] = $this->model_absen->getTotalHadirAllPegawaiPerhari();
+            // $data['getTotalHadirAllPegawaiPerhari'] = $this->model_absen->getTotalHadirAllPegawaiPerhari()[0]->total_hadir;
+
+            var_dump($data['getTotalHadirAllPegawaiPerhari']);
+            die();
 
             echo view('layout/v_header', $data);
             echo view('layout/v_sidebar');
@@ -37,7 +42,8 @@ class DashboardController extends BaseController
         }
         elseif (session()->get('role') == 2) { // Role : Operator
             $data['title'] = 'Dashboard Operator';
-            $data['getTotalHadirAllPegawaiPerhari'] = $this->model_absen->getTotalHadirAllPegawaiPerhari()[0]->total_hadir;
+            $data['getTotalHadirAllPegawaiPerhari'] = 0;
+            // $data['getTotalHadirAllPegawaiPerhari'] = $this->model_absen->getTotalHadirAllPegawaiPerhari()[0]->total_hadir;
             echo view('layout/v_header', $data);
             echo view('layout/v_sidebar');
             echo view('layout/v_navbar');
