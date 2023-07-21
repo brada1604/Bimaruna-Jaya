@@ -27,10 +27,12 @@ class DashboardController extends BaseController
 
         if (session()->get('role') == 1) { // Role : Administrator
             $data['title'] = 'Dashboard Administrator';
-            $data['getTotalHadirAllPegawaiPerhari'] = 0;
-            // $data['getTotalHadirAllP egawaiPerhari'] = $this->model_absen->getTotalHadirAllPegawaiPerhari();
-            // $data['getTotalHadirAllPegawaiPerhari'] = $this->model_absen->getTotalHadirAllPegawaiPerhari()[0]->total_hadir;
-
+            $data['getTotalHadirAllPegawaiPerhari'] = $this->model_absen->getTotalHadirAllPegawaiPerhari()[0]->total_data;
+            $data['getTotalSakitBelumKonfirmasiAllPegawaiPerhari'] = $this->model_absen->getTotalSakitBelumKonfirmasiAllPegawaiPerhari()[0]->total_data;
+            $data['getTotalSakitSudahKonfirmasiAllPegawaiPerhari'] = $this->model_absen->getTotalSakitSudahKonfirmasiAllPegawaiPerhari()[0]->total_data;
+            $data['getTotalIzinBelumKonfirmasiAllPegawaiPerhari'] = $this->model_absen->getTotalIzinBelumKonfirmasiAllPegawaiPerhari()[0]->total_data;
+            $data['getTotalIzinSudahKonfirmasiAllPegawaiPerhari'] = $this->model_absen->getTotalIzinSudahKonfirmasiAllPegawaiPerhari()[0]->total_data;
+            $data['getTotalAlphaAllPegawaiPerhari'] = $this->model_absen->getTotalAlphaAllPegawaiPerhari()[0]->total_data;
 
             echo view('layout/v_header', $data);
             echo view('layout/v_sidebar');
@@ -40,8 +42,13 @@ class DashboardController extends BaseController
         }
         elseif (session()->get('role') == 2) { // Role : Operator
             $data['title'] = 'Dashboard Operator';
-            $data['getTotalHadirAllPegawaiPerhari'] = 0;
-            // $data['getTotalHadirAllPegawaiPerhari'] = $this->model_absen->getTotalHadirAllPegawaiPerhari()[0]->total_hadir;
+            $data['getTotalHadirAllPegawaiPerhari'] = $this->model_absen->getTotalHadirAllPegawaiPerhari()[0]->total_data;
+            $data['getTotalSakitBelumKonfirmasiAllPegawaiPerhari'] = $this->model_absen->getTotalSakitBelumKonfirmasiAllPegawaiPerhari()[0]->total_data;
+            $data['getTotalSakitSudahKonfirmasiAllPegawaiPerhari'] = $this->model_absen->getTotalSakitSudahKonfirmasiAllPegawaiPerhari()[0]->total_data;
+            $data['getTotalIzinBelumKonfirmasiAllPegawaiPerhari'] = $this->model_absen->getTotalIzinBelumKonfirmasiAllPegawaiPerhari()[0]->total_data;
+            $data['getTotalIzinSudahKonfirmasiAllPegawaiPerhari'] = $this->model_absen->getTotalIzinSudahKonfirmasiAllPegawaiPerhari()[0]->total_data;
+            $data['getTotalAlphaAllPegawaiPerhari'] = $this->model_absen->getTotalAlphaAllPegawaiPerhari()[0]->total_data;
+            
             echo view('layout/v_header', $data);
             echo view('layout/v_sidebar');
             echo view('layout/v_navbar');

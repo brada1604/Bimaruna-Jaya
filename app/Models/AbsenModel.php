@@ -89,4 +89,29 @@ class AbsenModel extends Model
         return $query->getResult();
     }
 
+    public function getTotalSakitBelumKonfirmasiAllPegawaiPerhari(){
+        $query = $this->db->query("SELECT * FROM v_total_sakit_belum_konfirmasi_semua_pegawai ");
+        return $query->getResult();
+    }
+
+    public function getTotalSakitSudahKonfirmasiAllPegawaiPerhari(){
+        $query = $this->db->query("SELECT * FROM v_total_sakit_sudah_konfirmasi_semua_pegawai ");
+        return $query->getResult();
+    }
+
+    public function getTotalIzinBelumKonfirmasiAllPegawaiPerhari(){
+        $query = $this->db->query("SELECT * FROM v_total_izin_belum_konfirmasi_semua_pegawai ");
+        return $query->getResult();
+    }
+
+    public function getTotalIzinSudahKonfirmasiAllPegawaiPerhari(){
+        $query = $this->db->query("SELECT * FROM v_total_izin_sudah_konfirmasi_semua_pegawai ");
+        return $query->getResult();
+    }
+
+    public function getTotalAlphaAllPegawaiPerhari(){
+        $query = $this->db->query("SELECT * FROM v_total_alpha_semua_pegawai_perhari ");
+        return $query->getResult();
+    }
+
 }

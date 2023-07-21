@@ -188,6 +188,7 @@ class AbsenController extends BaseController
             'id_pegawai' => $id_pegawai,
             'status_kehadiran' => $this->request->getVar('status_kehadiran'),
             'file' => '/'.$path_surat.'/'.$fileSurat_name,
+            'konfirmasi_petugas' => 0
         ]; 
          
         $this->model_absen->save($data_absen_pegawai);
