@@ -209,6 +209,7 @@ class AbsenController extends BaseController
     public function update_status_kehadiran($id_absen, $status_kehadiran){
         $data_absen_pegawai = [
             'status_kehadiran' => $status_kehadiran,
+            'konfirmasi_petugas' => 0,
         ];            
         
         $this->model_absen->update($id_absen, $data_absen_pegawai);

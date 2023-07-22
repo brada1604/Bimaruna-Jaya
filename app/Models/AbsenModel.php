@@ -114,4 +114,9 @@ class AbsenModel extends Model
         return $query->getResult();
     }
 
+    public function getTotalKehadiranPegawaiPertahunByNomorInduk($nomor_induk){
+        $query = $this->db->query("SELECT * FROM v_total_kehadiran_pegawai_by_nomor_induk_pertahun where nomor_induk = '$nomor_induk' ");
+        return $query->getResult();
+    }
+
 }

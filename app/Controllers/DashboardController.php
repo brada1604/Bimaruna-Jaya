@@ -48,7 +48,7 @@ class DashboardController extends BaseController
             $data['getTotalIzinBelumKonfirmasiAllPegawaiPerhari'] = $this->model_absen->getTotalIzinBelumKonfirmasiAllPegawaiPerhari()[0]->total_data;
             $data['getTotalIzinSudahKonfirmasiAllPegawaiPerhari'] = $this->model_absen->getTotalIzinSudahKonfirmasiAllPegawaiPerhari()[0]->total_data;
             $data['getTotalAlphaAllPegawaiPerhari'] = $this->model_absen->getTotalAlphaAllPegawaiPerhari()[0]->total_data;
-            
+
             echo view('layout/v_header', $data);
             echo view('layout/v_sidebar');
             echo view('layout/v_navbar');
@@ -59,6 +59,7 @@ class DashboardController extends BaseController
             $data['title'] = 'Dashboard Pegawai';
             $data['getPegawaiByIdUser'] = $this->model_pegawai->getPegawaiByIdUser(session()->get('id'));
             $data['code'] = $data['getPegawaiByIdUser'][0]->nomor_induk;
+            $data['getTotalKehadiranPegawaiPertahunByNomorInduk'] = $this->model_absen->getTotalKehadiranPegawaiPertahunByNomorInduk($data['code'])[0];
             echo view('layout/v_header', $data);
             echo view('layout/v_sidebar');
             echo view('layout/v_navbar');

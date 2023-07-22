@@ -153,8 +153,10 @@
                                                         <span class="badge bg-danger text-light">Belum dikonfirmasi</span>
                                                         <?php if ($session->role != 3) : ?>
                                                             <?php if ($row->status_kehadiran != 'ALPHA') : ?>
-                                                                <hr>
-                                                                <a href="/absen/update_konfirmasi_petugas/<?= $row->id_absen?>/1" class="btn btn-sm btn-dark">ACC</a>
+                                                                <?php if ($row->file) : ?>
+                                                                    <hr>
+                                                                    <a href="/absen/update_konfirmasi_petugas/<?= $row->id_absen?>/1" class="btn btn-sm btn-dark">ACC</a>
+                                                                <?php endif ?>  
                                                             <?php endif ?>
                                                         <?php endif ?>
 
